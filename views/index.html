@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Test</title>
+</head>
+<body>
+  <h1>Data Terkini dari WebSocket:</h1>
+  <pre id="data-container"></pre>
+
+  <script>
+    const dataContainer = document.getElementById('data-container');
+    const ws = new WebSocket('ws://127.0.0.1:5000');
+
+    ws.addEventListener('message', (event) => {
+      const data = JSON.parse(event.data);
+      // console.log(data);
+      // Tampilkan data yang diterima pada halaman
+      dataContainer.textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
